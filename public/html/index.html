@@ -88,13 +88,41 @@ header .nav .menu-group li a{
 /* ---------------------------------------------------- */
 /* ヒーローセクション                                   */
 /* ---------------------------------------------------- */
-.hero{
+
+.slide-box{
+	border: 1px solid #000000;
 	width: 100%;
-	height: 100%;
-	object-fit: cover;
 }
 
+.slide-box .slide-image-box{
+	position: relative;
+	max-width: 100%;
+	text-align: center;
+}
 
+.slide-box .slide-image-box img{
+	vertical-align: top;
+}
+
+.slide-box .slide-image-box .change-btn-right{
+	position: absolute;
+	right: 0px;
+	top: 50%;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+slide-box .slide-image-box .change-btn-left{
+	position: absolute;
+	right: 0px;
+	top: 50%;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+img#slide-image {
+    width: 100%;
+}
 /* ---------------------------------------------------- */
 /* ニュースセクション                                   */
 /* ---------------------------------------------------- */
@@ -291,8 +319,13 @@ header .nav .menu-group li a{
     <main class="main-content">
 
         <!-- ヒーローイメージ -->
-			<img class="hero" src="../images/gundam.JPG" alt="万博のガンダム">
-
+        <div class="slide-box">
+			<div class="slide-image-box">
+			<img id="slide-image" src="../images/gundam.JPG" alt="万博のガンダム">
+			<div class="change-btn-right"><i class="fas fa-chevron-right fa-4x"></i></div>
+			<div class="change-btn-left"><i class="fas fa-chevron-left fa-4x"></i></div>
+			</div>
+		</div>
         <!-- ニュースセクション -->
         <section id="news" class="section">
             <h2 class="section-title">NEWS</h2>
@@ -403,5 +436,49 @@ header .nav .menu-group li a{
                 &copy; 2025 KAWABATA YO All Rights Reserved.
             </div>
     </footer>
+    
+     <!--JavaScriptここから -->
+    <script>
+		const images=['../images/gundam.JPG','../images/photo2.JPG','../images/photo3.JPG','../images/photo4.JPG','../images/photo5.JPG'];
+		let slideCount=0;
+		const next=document.querySelector('.change-btn-right');
+		const prev=document.querySelector('.change-btn-left');
+		
+		next.addEventListener('click',function(){
+			slideCount++;
+			
+			if(slideCount<images.length){
+				document.getElementById('slide-image').src=images[slideCount];
+			}
+			else{
+				document.getElementById('slide-image').src=images[0];
+				slideCount=0
+			}
+		})
+		
+		prev.addEventListener('click',function(){
+			slideCount--;
+			
+			if(slideCount>0){
+				document.getElementById('slide-image').src=images[slideCount];
+			}
+			else{
+				document.getElementById('slide-image').src=images[images.length-1];
+				slideCount=images.length-1
+			}
+		})
+		
+		setInterval(()=>{
+			slideCount++;
+			if(slideCount<images.length){
+				document.getElementById('slide-image').src=images[slideCount];
+			}
+			else{
+				document.getElementById('slide-image').src=images[0];
+				slideCount=0
+			}
+		},5000);
+	</script>
+    
 </body>
 </html>
