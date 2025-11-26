@@ -66,6 +66,8 @@ header {
    
    display: flex;
    justify-content: space-between;
+   
+   z-index: 100;
 }
 
 header .nav .menu-group{
@@ -91,7 +93,6 @@ header .nav .menu-group li a{
 	height: 100%;
 	object-fit: cover;
 }
-
 
 
 /* ---------------------------------------------------- */
@@ -275,7 +276,7 @@ header .nav .menu-group li a{
     <header>
         
             <!-- ロゴ / 名前 -->
-           <h1 class="title">YO KAWABATA</h1>
+           <h1 class="title"><a href="#top" >YO KAWABATA</a></h1>
            	<nav class="nav">
                 <ul class="menu-group">
                     <li class="menu-item"><a href="#news">NEWS</a></li>
